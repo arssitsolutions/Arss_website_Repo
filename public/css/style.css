@@ -4,6 +4,7 @@
   color: #102a43;
   background: #f7fbff;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --gold: #D4AF37;
 }
 
 * {
@@ -121,21 +122,25 @@ a:hover {
 }
 
 .site-nav a {
-  padding: 0.62rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(206, 232, 255, 0.7);
-  background: rgba(255, 255, 255, 0.92);
+  padding: 0.5rem 0.85rem;
+  border-radius: 0;
+  border: none;
+  background: transparent;
   font-size: 0.95rem;
   color: #0f172a;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.85), 0 10px 22px rgba(16, 42, 67, 0.04);
-  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+  font-weight: 700;
+  box-shadow: none;
+  -webkit-text-stroke: 0.9px var(--gold);
+  /* fallback for non-webkit: multiple text-shadow offsets to simulate outline */
+  text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
+  transition: transform 0.12s ease, color 0.12s ease, text-shadow 0.12s ease;
 }
 
 .site-nav a:hover {
-  transform: translateY(-1px);
-  background: rgba(19, 78, 138, 0.14);
-  color: #0f3760;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.95), 0 14px 28px rgba(16, 42, 67, 0.06);
+  transform: translateY(-2px);
+  color: #0f172a;
+  -webkit-text-stroke-width: 1.1px;
+  text-shadow: 1.2px 1.2px 0 var(--gold), -1.2px 1.2px 0 var(--gold), 1.2px -1.2px 0 var(--gold), -1.2px -1.2px 0 var(--gold);
 }
 
 .main-shell {
@@ -348,18 +353,33 @@ a:hover {
 }
 
 .page-links a {
-  padding: 0.85rem 1.1rem;
-  background: rgba(255,255,255,0.96);
-  border: 1px solid rgba(206, 232, 255, 0.8);
-  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   color: #0f172a;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  font-weight: 700;
+  -webkit-text-stroke: 0.8px var(--gold);
+  text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
+  transition: transform 0.12s ease, text-shadow 0.12s ease, color 0.12s ease;
 }
 
 .page-links a:hover {
-  background: rgba(19, 78, 138, 0.14);
-  color: #0f3760;
   transform: translateY(-1px);
+  -webkit-text-stroke-width: 1px;
+  text-shadow: 1.2px 1.2px 0 var(--gold), -1.2px 1.2px 0 var(--gold), 1.2px -1.2px 0 var(--gold), -1.2px -1.2px 0 var(--gold);
+}
+
+/* Apply same tab style inside footers */
+.site-footer .site-nav a {
+  padding: 0.45rem 0.75rem;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: #0f172a;
+  font-weight: 700;
+  -webkit-text-stroke: 0.8px var(--gold);
+  text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
 }
 
 .site-footer {
@@ -815,7 +835,8 @@ a:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center; /* vertically center content */
+  align-items: center;    /* align content to the horizontal center */
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: 8px;
   color: #ffffff;
@@ -847,6 +868,78 @@ a:hover {
   max-width: 480px;
   font-size: clamp(1.7rem, 3vw, 3.8rem);
   line-height: 1.02;
+}
+
+/* right-align the visible text inside the visual panel */
+.page-visual span,
+.page-visual strong {
+  text-align: center;
+}
+
+/* Subtle gold shimmer on hover for nav and page links */
+.site-nav a,
+.page-links a,
+.site-footer .site-nav a {
+  position: relative;
+  background-image: none;
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: currentColor; /* normal state shows filled text with gold stroke fallback */
+}
+
+.site-nav a:hover,
+.page-links a:hover,
+.site-footer .site-nav a:hover,
+.site-nav a:focus-visible,
+.page-links a:focus-visible,
+.site-footer .site-nav a:focus-visible {
+  background-image: linear-gradient(90deg, rgba(212,175,55,0.12) 0%, rgba(255,250,230,0.95) 50%, rgba(212,175,55,0.12) 100%);
+  background-position: 100% 50%;
+  -webkit-text-fill-color: transparent; /* reveal the moving gradient */
+  -webkit-text-stroke-width: 1.1px;
+  text-shadow: none; /* remove shadow so shimmer reads clearly */
+  transition: background-position 0.9s ease, -webkit-text-stroke-width 0.12s ease, text-shadow 0.12s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a:hover,
+  .page-links a:hover,
+  .site-footer .site-nav a:hover {
+    background-position: 0% 50%;
+    transition: none;
+  }
+}
+
+/* Continuous subtle shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -30% 50%; }
+  100% { background-position: 130% 50%; }
+}
+
+/* Apply a very subtle continuous shimmer while preserving outline */
+.site-nav a,
+.page-links a,
+.site-footer .site-nav a {
+  background-image: linear-gradient(90deg, rgba(212,175,55,0.06) 0%, rgba(255,250,230,0.9) 50%, rgba(212,175,55,0.06) 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.9px var(--gold);
+  text-shadow: none;
+  animation: goldShimmer 4s linear infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a,
+  .page-links a,
+  .site-footer .site-nav a {
+    animation: none;
+    -webkit-text-fill-color: currentColor;
+    -webkit-text-stroke: 0.9px var(--gold);
+    text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
+  }
 }
 
 .page-hero-blue > div:first-child {
