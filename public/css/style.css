@@ -872,7 +872,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertically center content */
-  align-items: center;    /* align content to the horizontal center */
+  align-items: flex-end;    /* align content to the horizontal right */
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: 8px;
   color: #ffffff;
@@ -909,7 +909,7 @@ a:hover {
 /* right-align the visible text inside the visual panel */
 .page-visual span,
 .page-visual strong {
-  text-align: center;
+  text-align: right;
 }
 
 @media (prefers-reduced-motion: reduce) {
