@@ -93,8 +93,8 @@ a:hover {
 
 .brand-tagline,
 .footer-tagline {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.66rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0;
   color: #44608d;
@@ -135,7 +135,8 @@ a:hover {
   box-shadow: none;
   -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.58);
   text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.28);
-  transition: color 0.16s ease, transform 0.16s ease;
+  outline: 1px solid transparent;
+  transition: color 0.16s ease, transform 0.16s ease, outline-color 0.16s ease;
 }
 
 .site-nav a::after,
@@ -143,44 +144,33 @@ a:hover {
 .site-footer .site-nav a::after {
   content: '';
   position: absolute;
-  top: 18%;
-  bottom: 18%;
-  left: -45%;
-  width: 24%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent);
-  transform: skewX(-18deg);
-  opacity: 0;
+  right: 0.3rem;
+  bottom: 0.24rem;
+  left: 0.3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), #d4af37, rgba(255, 242, 169, 0.95), #d4af37, rgba(212, 175, 55, 0.25), transparent);
+  background-size: 220% 100%;
+  opacity: 0.72;
   pointer-events: none;
-  animation: navSpark 4.8s ease-in-out infinite;
+  animation: navGoldLine 3.4s linear infinite;
 }
 
 .site-nav a:hover {
   transform: translateY(-1px);
   color: #000000;
+  outline-color: rgba(212, 175, 55, 0.42);
 }
 
 .site-nav a:hover::after,
 .page-links a:hover::after,
 .site-footer .site-nav a:hover::after {
-  animation-duration: 1.4s;
-  opacity: 0.65;
+  animation-duration: 1.6s;
+  opacity: 1;
 }
 
-@keyframes navSpark {
-  0%, 68% {
-    left: -45%;
-    opacity: 0;
-  }
-  74% {
-    opacity: 0.55;
-  }
-  88% {
-    opacity: 0.35;
-  }
-  100% {
-    left: 122%;
-    opacity: 0;
-  }
+@keyframes navGoldLine {
+  0% { background-position: 160% 50%; }
+  100% { background-position: -60% 50%; }
 }
 
 .main-shell {
@@ -403,12 +393,14 @@ a:hover {
   font-weight: 700;
   -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.55);
   text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.24);
-  transition: transform 0.16s ease, color 0.16s ease;
+  outline: 1px solid transparent;
+  transition: transform 0.16s ease, color 0.16s ease, outline-color 0.16s ease;
 }
 
 .page-links a:hover {
   transform: translateY(-1px);
   color: #000000;
+  outline-color: rgba(212, 175, 55, 0.42);
 }
 
 /* Apply same tab style inside footers */
@@ -423,6 +415,7 @@ a:hover {
   font-weight: 700;
   -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.55);
   text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.24);
+  outline: 1px solid transparent;
 }
 
 .site-footer {
