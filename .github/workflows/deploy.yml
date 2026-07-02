@@ -1,0 +1,90 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      LAMBDA_KEY: lambda-${{ github.sha }}.zip
+      DOMAIN_NAME: arss-it-solutions.com
+      HOSTED_ZONE_ID: ${{ secrets.HOSTED_ZONE_ID }}
+      CERTIFICATE_ARN: ${{ secrets.CERTIFICATE_ARN || 'arn:aws:acm:us-east-2:089959489141:certificate/1f78da33-775f-46f7-85f7-8cab31b3e0e2' }}
+      AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-2' }}
+      ARTIFACT_STACK_NAME: arss-it-solutions-artifacts
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-region: ${{ env.AWS_REGION || 'us-east-2' }}
+          role-to-assume: arn:aws:iam::089959489141:role/ARSS_IT_SOLUTIONS_WEBSITE_GIT_ROLE
+          role-session-name: github-actions-deploy
+
+      - name: Ensure Elastic Load Balancing service-linked role exists
+        run: |
+          if ! aws iam get-role --role-name AWSServiceRoleForElasticLoadBalancing >/dev/null 2>&1; then
+            aws iam create-service-linked-role --aws-service-name elasticloadbalancing.amazonaws.com || true
+          else
+            echo 'Elastic Load Balancing service-linked role already exists.'
+          fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Validate Route53 hosted zone ID
+        run: |
+          if [ -z "$HOSTED_ZONE_ID" ]; then
+            echo 'HOSTED_ZONE_ID is required for DNS and ACM validation.'
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Package Lambda artifact
+        run: |
+          rm -f $LAMBDA_KEY
+          zip -r $LAMBDA_KEY index.js package.json public node_modules
+
+      - name: Create artifact bucket stack
+        run: |
+          aws cloudformation deploy \
+            --stack-name "$ARTIFACT_STACK_NAME" \
+            --template-file infra-template.yml
+
+      - name: Retrieve artifact bucket name
+        id: artifact-bucket
+        run: |
+          BUCKET=$(aws cloudformation describe-stacks \
+            --stack-name "$ARTIFACT_STACK_NAME" \
+            --query "Stacks[0].Outputs[?OutputKey=='ArtifactBucketName'].OutputValue" \
+            --output text)
+          echo "ARTIFACT_BUCKET=$BUCKET" >> $GITHUB_ENV
+
+      - name: Upload Lambda package to S3
+        run: aws s3 cp "$LAMBDA_KEY" "s3://$ARTIFACT_BUCKET/$LAMBDA_KEY"
+
+      - name: Deploy CloudFormation stack
+        run: |
+          aws cloudformation deploy \
+            --stack-name arss-it-solutions-app \
+            --template-file app-template.yml \
+            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
+            --parameter-overrides \
+              LambdaCodeBucket=$ARTIFACT_BUCKET \
+              LambdaCodeKey=$LAMBDA_KEY \
+              DomainName=$DOMAIN_NAME \
+              HostedZoneId=$HOSTED_ZONE_ID \
+              CertificateArn=$CERTIFICATE_ARN
