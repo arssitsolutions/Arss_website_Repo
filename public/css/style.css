@@ -663,8 +663,7 @@ a:hover {
   border-radius: 0;
   color: #102a66;
   background:
-    linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 18%, rgba(255, 255, 255, 0) 38%),
-    linear-gradient(135deg, #06183f 0%, #1454c8 38%, #6334d1 68%, #b91873 100%);
+    linear-gradient(180deg, #264ea8 0%, #14377d 42%, #6b35c7 70%, #b31973 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -675,9 +674,9 @@ a:hover {
   font-weight: 800;
   line-height: 1.14;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.85),
-    0 4px 10px rgba(16, 42, 67, 0.24),
-    0 14px 30px rgba(16, 42, 67, 0.16);
+    0 1px 0 rgba(255, 255, 255, 0.24),
+    0 4px 10px rgba(16, 42, 67, 0.28),
+    0 14px 30px rgba(16, 42, 67, 0.18);
   animation: quoteComeForward 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
