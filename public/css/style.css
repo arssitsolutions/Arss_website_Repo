@@ -122,25 +122,65 @@ a:hover {
 }
 
 .site-nav a {
+  position: relative;
+  overflow: hidden;
   padding: 0.5rem 0.85rem;
   border-radius: 0;
   border: none;
   background: transparent;
-  font-size: 0.95rem;
-  color: #0f172a;
-  font-weight: 700;
+  font-size: 0.94rem;
+  color: #111827;
+  font-weight: 750;
+  letter-spacing: 0;
   box-shadow: none;
-  -webkit-text-stroke: 0.9px var(--gold);
-  /* fallback for non-webkit: multiple text-shadow offsets to simulate outline */
-  text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
-  transition: transform 0.12s ease, color 0.12s ease, text-shadow 0.12s ease;
+  -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.58);
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.28);
+  transition: color 0.16s ease, transform 0.16s ease;
+}
+
+.site-nav a::after,
+.page-links a::after,
+.site-footer .site-nav a::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  bottom: 18%;
+  left: -45%;
+  width: 24%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+  animation: navSpark 4.8s ease-in-out infinite;
 }
 
 .site-nav a:hover {
-  transform: translateY(-2px);
-  color: #0f172a;
-  -webkit-text-stroke-width: 1.1px;
-  text-shadow: 1.2px 1.2px 0 var(--gold), -1.2px 1.2px 0 var(--gold), 1.2px -1.2px 0 var(--gold), -1.2px -1.2px 0 var(--gold);
+  transform: translateY(-1px);
+  color: #000000;
+}
+
+.site-nav a:hover::after,
+.page-links a:hover::after,
+.site-footer .site-nav a:hover::after {
+  animation-duration: 1.4s;
+  opacity: 0.65;
+}
+
+@keyframes navSpark {
+  0%, 68% {
+    left: -45%;
+    opacity: 0;
+  }
+  74% {
+    opacity: 0.55;
+  }
+  88% {
+    opacity: 0.35;
+  }
+  100% {
+    left: 122%;
+    opacity: 0;
+  }
 }
 
 .main-shell {
@@ -353,33 +393,36 @@ a:hover {
 }
 
 .page-links a {
+  position: relative;
+  overflow: hidden;
   padding: 0.35rem 0.6rem;
   background: transparent;
   border: none;
   border-radius: 0;
-  color: #0f172a;
+  color: #111827;
   font-weight: 700;
-  -webkit-text-stroke: 0.8px var(--gold);
-  text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
-  transition: transform 0.12s ease, text-shadow 0.12s ease, color 0.12s ease;
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.24);
+  transition: transform 0.16s ease, color 0.16s ease;
 }
 
 .page-links a:hover {
   transform: translateY(-1px);
-  -webkit-text-stroke-width: 1px;
-  text-shadow: 1.2px 1.2px 0 var(--gold), -1.2px 1.2px 0 var(--gold), 1.2px -1.2px 0 var(--gold), -1.2px -1.2px 0 var(--gold);
+  color: #000000;
 }
 
 /* Apply same tab style inside footers */
 .site-footer .site-nav a {
+  position: relative;
+  overflow: hidden;
   padding: 0.45rem 0.75rem;
   border-radius: 0;
   border: none;
   background: transparent;
-  color: #0f172a;
+  color: #111827;
   font-weight: 700;
-  -webkit-text-stroke: 0.8px var(--gold);
-  text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .site-footer {
@@ -876,69 +919,15 @@ a:hover {
   text-align: center;
 }
 
-/* Subtle gold shimmer on hover for nav and page links */
-.site-nav a,
-.page-links a,
-.site-footer .site-nav a {
-  position: relative;
-  background-image: none;
-  background-size: 200% 100%;
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: currentColor; /* normal state shows filled text with gold stroke fallback */
-}
-
-.site-nav a:hover,
-.page-links a:hover,
-.site-footer .site-nav a:hover,
-.site-nav a:focus-visible,
-.page-links a:focus-visible,
-.site-footer .site-nav a:focus-visible {
-  background-image: linear-gradient(90deg, rgba(212,175,55,0.12) 0%, rgba(255,250,230,0.95) 50%, rgba(212,175,55,0.12) 100%);
-  background-position: 100% 50%;
-  -webkit-text-fill-color: transparent; /* reveal the moving gradient */
-  -webkit-text-stroke-width: 1.1px;
-  text-shadow: none; /* remove shadow so shimmer reads clearly */
-  transition: background-position 0.9s ease, -webkit-text-stroke-width 0.12s ease, text-shadow 0.12s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-nav a:hover,
-  .page-links a:hover,
-  .site-footer .site-nav a:hover {
-    background-position: 0% 50%;
-    transition: none;
-  }
-}
-
-/* Continuous subtle shimmer animation */
-@keyframes goldShimmer {
-  0% { background-position: -30% 50%; }
-  100% { background-position: 130% 50%; }
-}
-
-/* Apply a very subtle continuous shimmer while preserving outline */
-.site-nav a,
-.page-links a,
-.site-footer .site-nav a {
-  background-image: linear-gradient(90deg, rgba(212,175,55,0.06) 0%, rgba(255,250,230,0.9) 50%, rgba(212,175,55,0.06) 100%);
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0.9px var(--gold);
-  text-shadow: none;
-  animation: goldShimmer 4s linear infinite;
-  will-change: background-position;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .site-nav a,
   .page-links a,
-  .site-footer .site-nav a {
+  .site-footer .site-nav a,
+  .site-nav a::after,
+  .page-links a::after,
+  .site-footer .site-nav a::after {
     animation: none;
-    -webkit-text-fill-color: currentColor;
-    -webkit-text-stroke: 0.9px var(--gold);
-    text-shadow: 1px 1px 0 var(--gold), -1px 1px 0 var(--gold), 1px -1px 0 var(--gold), -1px -1px 0 var(--gold);
+    transition: none;
   }
 }
 
