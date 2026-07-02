@@ -633,10 +633,10 @@ a:hover {
   display: grid;
   place-items: center;
   perspective: 1800px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0b1026, #172554 34%, #4338ca 62%, #db2777);
-  box-shadow: 0 30px 90px rgba(43, 34, 111, 0.3);
-  overflow: hidden;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .top-quote-stage {
@@ -656,12 +656,12 @@ a:hover {
   display: grid;
   place-items: center;
   padding: 1.35rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: 8px;
+  border: none;
+  border-radius: 0;
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(255,255,255,0.34), rgba(255,255,255,0.1));
-  box-shadow: 0 46px 110px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255,255,255,0.55);
-  backdrop-filter: blur(18px);
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
   font-size: clamp(1.35rem, 2.8vw, 2.8rem);
   text-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
   animation: quoteComeForward 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
