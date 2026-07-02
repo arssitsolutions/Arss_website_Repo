@@ -661,22 +661,23 @@ a:hover {
   padding: 0;
   border: none;
   border-radius: 0;
-  color: #0b1636;
+  color: #102a66;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0) 38%),
-    linear-gradient(135deg, #0b1636 0%, #1f3da7 38%, #6b34b8 68%, #c21f73 100%);
+    linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 18%, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(135deg, #06183f 0%, #1454c8 38%, #6334d1 68%, #b91873 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.35px rgba(5, 18, 48, 0.42);
   box-shadow: none;
   backdrop-filter: none;
-  font-size: clamp(1.45rem, 2.8vw, 2.8rem);
+  font-size: clamp(1.55rem, 2.9vw, 3rem);
   font-weight: 800;
   line-height: 1.14;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.65),
-    0 12px 28px rgba(16, 42, 67, 0.22),
-    0 0 18px rgba(90, 80, 190, 0.2);
+    0 1px 0 rgba(255, 255, 255, 0.85),
+    0 4px 10px rgba(16, 42, 67, 0.24),
+    0 14px 30px rgba(16, 42, 67, 0.16);
   animation: quoteComeForward 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
@@ -692,12 +693,12 @@ a:hover {
     transform: translate(-50%, -50%) translateZ(-760px) scale(0.34) rotateX(18deg) rotateY(-10deg);
     filter: blur(14px);
   }
-  7%, 19% {
-    opacity: 1;
-    transform: translate(-50%, -50%) translateZ(180px) scale(1.08) rotateX(0) rotateY(0);
+  8%, 22% {
+    opacity: 0.98;
+    transform: translate(-50%, -50%) translateZ(150px) scale(1.02) rotateX(0) rotateY(0);
     filter: blur(0);
   }
-  25%, 100% {
+  29%, 100% {
     opacity: 0;
     transform: translate(-50%, -50%) translateZ(520px) scale(1.32) rotateX(-8deg) rotateY(8deg);
     filter: blur(10px);
