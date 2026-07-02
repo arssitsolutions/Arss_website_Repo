@@ -4,6 +4,7 @@
   color: #102a43;
   background: #f7fbff;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --gold: #D4AF37;
 }
 
 * {
@@ -53,10 +54,11 @@ a:hover {
 
 .site-logo {
   width: 76px;
-  height: auto;
-  border-radius: 26px;
-  border: 1px solid rgba(19, 78, 138, 0.32);
-  box-shadow: 0 20px 42px rgba(19, 78, 138, 0.18);
+  height: 76px;
+  display: block;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 .brand-mark,
@@ -94,8 +96,8 @@ a:hover {
 
 .brand-tagline,
 .footer-tagline {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.66rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0;
   color: #44608d;
@@ -123,21 +125,55 @@ a:hover {
 }
 
 .site-nav a {
-  padding: 0.62rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(206, 232, 255, 0.7);
-  background: rgba(255, 255, 255, 0.92);
-  font-size: 0.95rem;
-  color: #0f172a;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.85), 0 10px 22px rgba(16, 42, 67, 0.04);
-  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.94rem;
+  color: #111827;
+  font-weight: 750;
+  letter-spacing: 0;
+  box-shadow: none;
+  -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.58);
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.28);
+  outline: 1px solid transparent;
+  transition: color 0.16s ease, transform 0.16s ease, outline-color 0.16s ease;
+}
+
+.site-nav a::after,
+.page-links a::after,
+.site-footer .site-nav a::after {
+  content: '';
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.24rem;
+  left: 0.3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), #d4af37, rgba(255, 242, 169, 0.95), #d4af37, rgba(212, 175, 55, 0.25), transparent);
+  background-size: 220% 100%;
+  opacity: 0.72;
+  pointer-events: none;
+  animation: navGoldLine 3.4s linear infinite;
 }
 
 .site-nav a:hover {
   transform: translateY(-1px);
-  background: rgba(19, 78, 138, 0.14);
-  color: #0f3760;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.95), 0 14px 28px rgba(16, 42, 67, 0.06);
+  color: #000000;
+  outline-color: rgba(212, 175, 55, 0.42);
+}
+
+.site-nav a:hover::after,
+.page-links a:hover::after,
+.site-footer .site-nav a:hover::after {
+  animation-duration: 1.6s;
+  opacity: 1;
+}
+
+@keyframes navGoldLine {
+  0% { background-position: 160% 50%; }
+  100% { background-position: -60% 50%; }
 }
 
 .main-shell {
@@ -350,18 +386,39 @@ a:hover {
 }
 
 .page-links a {
-  padding: 0.85rem 1.1rem;
-  background: rgba(255,255,255,0.96);
-  border: 1px solid rgba(206, 232, 255, 0.8);
-  border-radius: 999px;
-  color: #0f172a;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #111827;
+  font-weight: 700;
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.24);
+  outline: 1px solid transparent;
+  transition: transform 0.16s ease, color 0.16s ease, outline-color 0.16s ease;
 }
 
 .page-links a:hover {
-  background: rgba(19, 78, 138, 0.14);
-  color: #0f3760;
   transform: translateY(-1px);
+  color: #000000;
+  outline-color: rgba(212, 175, 55, 0.42);
+}
+
+/* Apply same tab style inside footers */
+.site-footer .site-nav a {
+  position: relative;
+  overflow: hidden;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: #111827;
+  font-weight: 700;
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.24);
+  outline: 1px solid transparent;
 }
 
 .site-footer {
@@ -380,9 +437,7 @@ a:hover {
 .footer-logo {
   width: 72px;
   height: auto;
-  border-radius: 12px;
-  border: 1px solid rgba(19,78,138,0.14);
-  box-shadow: 0 12px 26px rgba(19,78,138,0.08);
+  display: inline-block;
 }
 .footer-brand .footer-title {
   margin: 0;
@@ -582,8 +637,8 @@ a:hover {
   place-items: center;
   perspective: 1800px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #0b1026, #172554 34%, #4338ca 62%, #db2777);
-  box-shadow: 0 30px 90px rgba(43, 34, 111, 0.3);
+  background: linear-gradient(135deg, #0b1636 0%, #20318a 45%, #6b34b8 70%, #c21f73 100%);
+  box-shadow: 0 26px 70px rgba(16, 42, 67, 0.16);
   overflow: hidden;
 }
 
@@ -593,26 +648,35 @@ a:hover {
 
 .quote-device {
   position: relative;
-  width: min(94%, 1080px);
+  width: min(94%, 1120px);
   min-height: 190px;
   transform-style: preserve-3d;
 }
 
 .quote-device .quote-line {
-  width: min(100%, 920px);
+  width: min(100%, 980px);
   min-height: 118px;
   display: grid;
   place-items: center;
   padding: 1.35rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 18px;
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(255,255,255,0.34), rgba(255,255,255,0.1));
-  box-shadow: 0 46px 110px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255,255,255,0.55);
-  backdrop-filter: blur(18px);
-  font-size: clamp(1.35rem, 2.8vw, 2.8rem);
-  text-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.12));
+  -webkit-text-fill-color: currentColor;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 18px 36px rgba(11, 22, 54, 0.18);
+  backdrop-filter: blur(4px);
+  font-size: clamp(1.8rem, 3.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  text-shadow: 0 10px 24px rgba(15, 28, 56, 0.32), 0 0 2px rgba(255, 255, 255, 0.85);
   animation: quoteComeForward 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.quote-device .quote-line::after {
+  content: none;
 }
 
 .quote-device .quote-line:nth-child(1) { animation-delay: 0s; }
@@ -819,7 +883,8 @@ a:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center; /* vertically center content */
+  align-items: flex-end;    /* align content to the horizontal right */
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: 8px;
   color: #ffffff;
@@ -851,6 +916,24 @@ a:hover {
   max-width: 480px;
   font-size: clamp(1.7rem, 3vw, 3.8rem);
   line-height: 1.02;
+}
+
+/* right-align the visible text inside the visual panel */
+.page-visual span,
+.page-visual strong {
+  text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a,
+  .page-links a,
+  .site-footer .site-nav a,
+  .site-nav a::after,
+  .page-links a::after,
+  .site-footer .site-nav a::after {
+    animation: none;
+    transition: none;
+  }
 }
 
 .page-hero-blue > div:first-child {
