@@ -636,10 +636,12 @@ a:hover {
   display: grid;
   place-items: center;
   perspective: 1800px;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 32% 42%, rgba(255, 255, 255, 0.18), transparent 32%),
+    linear-gradient(135deg, #0b1636 0%, #20318a 45%, #6b34b8 70%, #c21f73 100%);
+  box-shadow: 0 26px 70px rgba(16, 42, 67, 0.16);
+  overflow: hidden;
 }
 
 .top-quote-stage {
@@ -648,28 +650,33 @@ a:hover {
 
 .quote-device {
   position: relative;
-  width: min(94%, 1080px);
+  width: min(94%, 1120px);
   min-height: 190px;
   transform-style: preserve-3d;
 }
 
 .quote-device .quote-line {
-  width: min(100%, 920px);
+  width: min(100%, 980px);
   min-height: 118px;
   display: grid;
   place-items: center;
-  padding: 1.35rem 2rem;
+  padding: 0;
   border: none;
   border-radius: 0;
-  color: transparent;
-  background: linear-gradient(90deg, #f5f0ff 0%, #b88bff 28%, #f2d874 54%, #f4e1b7 72%, #ffffff 100%);
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 42%, #dce8ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   box-shadow: none;
   backdrop-filter: none;
-  font-size: clamp(1.35rem, 2.8vw, 2.8rem);
-  text-shadow: 0 10px 24px rgba(15, 28, 56, 0.32), 0 0 2px rgba(255, 255, 255, 0.85);
+  font-size: clamp(1.8rem, 3.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.32),
+    0 16px 34px rgba(3, 9, 26, 0.42),
+    0 0 22px rgba(255, 255, 255, 0.18);
   animation: quoteComeForward 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
