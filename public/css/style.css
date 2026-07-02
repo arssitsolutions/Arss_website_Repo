@@ -54,9 +54,7 @@ a:hover {
 .site-logo {
   width: 76px;
   height: auto;
-  border-radius: 26px;
-  border: 1px solid rgba(19, 78, 138, 0.32);
-  box-shadow: 0 20px 42px rgba(19, 78, 138, 0.18);
+  display: block;
 }
 
 .brand-mark,
@@ -380,9 +378,7 @@ a:hover {
 .footer-logo {
   width: 72px;
   height: auto;
-  border-radius: 12px;
-  border: 1px solid rgba(19,78,138,0.14);
-  box-shadow: 0 12px 26px rgba(19,78,138,0.08);
+  display: inline-block;
 }
 .footer-brand .footer-title {
   margin: 0;
