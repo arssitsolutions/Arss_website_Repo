@@ -658,12 +658,12 @@ a:hover {
   padding: 1.35rem 2rem;
   border: none;
   border-radius: 0;
-  color: #ffffff;
+  color: #0b1f44;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
   font-size: clamp(1.35rem, 2.8vw, 2.8rem);
-  text-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 5px 18px rgba(11, 31, 68, 0.12);
   animation: quoteComeForward 15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
