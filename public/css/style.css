@@ -1054,3 +1054,99 @@ a:hover {
     padding: 1.2rem;
   }
 }
+
+/* Contact Form Styles */
+.contact-form-band {
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(19, 78, 138, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-row:last-of-type {
+  grid-template-columns: 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #0f3760;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem 1rem;
+  font-size: 0.94rem;
+  border: 1px solid rgba(19, 78, 138, 0.24);
+  border-radius: 6px;
+  background: white;
+  color: #102a43;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: rgba(16, 42, 67, 0.48);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #134e8a;
+  box-shadow: 0 0 0 3px rgba(19, 78, 138, 0.1);
+}
+
+.submit-button {
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #192f59 0%, #1d4f8c 100%);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  box-shadow: 0 4px 12px rgba(19, 78, 138, 0.2);
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(19, 78, 138, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-form-band {
+    margin: 2rem 1rem;
+    padding: 1.5rem 1rem;
+  }
+}
