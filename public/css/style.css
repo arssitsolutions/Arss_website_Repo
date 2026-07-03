@@ -140,7 +140,8 @@ a:hover {
   text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.28);
   outline: 1px solid transparent;
   transition: color 0.16s ease, transform 0.16s ease, outline-color 0.16s ease;
-  filter: grayscale(100%) brightness(0.6);
+  mix-blend-mode: multiply;
+  opacity: 0.8;
 }
 
 .site-nav a::after,
@@ -157,7 +158,6 @@ a:hover {
   opacity: 0.72;
   pointer-events: none;
   animation: navGoldLine 3.4s linear infinite;
-  filter: saturate(3) brightness(2.8);
 }
 
 .site-nav a:hover {
@@ -171,7 +171,6 @@ a:hover {
 .site-footer .site-nav a:hover::after {
   animation-duration: 1.6s;
   opacity: 1;
-  filter: saturate(3) brightness(2.8);
 }
 
 @keyframes navGoldLine {
