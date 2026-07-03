@@ -171,6 +171,11 @@ a:hover {
   opacity: 1;
 }
 
+.nav-symbol {
+  color: #000000;
+  filter: grayscale(1) brightness(0.5);
+}
+
 @keyframes navGoldLine {
   0% { background-position: 160% 50%; }
   100% { background-position: -60% 50%; }
