@@ -157,6 +157,7 @@ a:hover {
   opacity: 0.72;
   pointer-events: none;
   animation: navGoldLine 3.4s linear infinite;
+  filter: saturate(3) brightness(2.8);
 }
 
 .site-nav a:hover {
@@ -170,6 +171,7 @@ a:hover {
 .site-footer .site-nav a:hover::after {
   animation-duration: 1.6s;
   opacity: 1;
+  filter: saturate(3) brightness(2.8);
 }
 
 @keyframes navGoldLine {
