@@ -140,8 +140,7 @@ a:hover {
   text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.28);
   outline: 1px solid transparent;
   transition: color 0.16s ease, transform 0.16s ease, outline-color 0.16s ease;
-  mix-blend-mode: multiply;
-  opacity: 0.8;
+  filter: grayscale(1) brightness(0.4);
 }
 
 .site-nav a::after,
