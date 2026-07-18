@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { handler } = require('@vendia/serverless-express');
+const serverlessExpress = require('@vendia/serverless-express');
 
 const app = express();
 
@@ -17,8 +17,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Production - Lambda handler (async/await compatible)
-exports.handler = handler({ app });
+// Production - Lambda handler
+exports.handler = serverlessExpress({ app });
 
 // Development - local server
 if (!process.env.AWS_EXECUTION_ENV) {
