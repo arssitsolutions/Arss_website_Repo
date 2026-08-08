@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARSS IT Solutions | ARSS IT Solutions</title>
-  <link rel="stylesheet" href="/css/style.css?v=20260701T2235" />
+  <link rel="stylesheet" href="/css/style.css?v=20260704T0009" />
 </head>
 <body>
   <header class="site-header">
@@ -16,15 +16,15 @@
       </span>
     </a>
     <nav class="site-nav">
-      <a href="/index.html">Home</a>
+      <a href="/index.html"><span class="nav-symbol">🏠</span> Home</a>
       <a href="/who-we-are.html">Who Are We?</a>
       <a href="/what-we-do.html">What We Do</a>
-      <a href="/success.html">Success</a>
+      <a href="/success.html"><span class="nav-symbol">🎓</span> Success</a>
       <a href="/course-curriculum.html">Curriculum</a>
       <a href="/experience.html">Experience</a>
       <a href="/why-data-engineering.html">Why</a>
       <a href="/summary.html">Summary</a>
-      <a href="/thank-you.html">Thank You</a>
+      <a href="/contact.html"><span class="nav-symbol">@</span> Contact</a>
     </nav>
   </header>
   <main class="home-shell">
@@ -149,8 +149,52 @@
         <a href="experience.html">Experience</a>
         <a href="why-data-engineering.html">Why Data Engineering</a>
         <a href="summary.html">Summary</a>
-        <a href="thank-you.html">Thank You</a>
+        <a href="contact.html">Contact</a>
       </div>
+    </section>
+
+    <section class="contact-form-band">
+      <div class="section-heading">
+        <p class="eyebrow">Ready to get started?</p>
+        <h2>Tell us about yourself</h2>
+        <p class="section-copy">Fill in your details and we'll reach out to discuss your data engineering journey.</p>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xeebvkab" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label for="age">Age *</label>
+            <input type="number" id="age" name="age" required placeholder="28" min="18" max="80" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="qualification">Qualification *</label>
+            <select id="qualification" name="qualification" required>
+              <option value="">Select Your Qualification</option>
+              <option value="High School">High School</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Bachelor's">Bachelor's Degree</option>
+              <option value="Master's">Master's Degree</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567" />
+          </div>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
     </section>
   </main>
   <footer class="site-footer">
